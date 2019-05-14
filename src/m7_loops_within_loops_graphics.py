@@ -90,7 +90,7 @@ def hourglass(window, n, point, radius, color):
     a color that rosegraphics understands.
     """
     # -------------------------------------------------------------------------
-    # TODO: 2. Implement and test this function.
+    # DONE: 2. Implement and test this function.
     #       We provided some tests for you (above).
     # -------------------------------------------------------------------------
     ###########################################################################
@@ -110,6 +110,12 @@ def hourglass(window, n, point, radius, color):
         circle2 = circle.clone()
         circle2.center.x = point.x - j*r
         circle2.center.y = point.y - 2*j*r
+        circle2.fill_color = color
+        line_of_circles(circle2,(j+1),window)
+    for j in range(n):
+        circle2 = circle.clone()
+        circle2.center.x = point.x - j*r
+        circle2.center.y = point.y + 2*j*r
         circle2.fill_color = color
         line_of_circles(circle2,(j+1),window)
 
