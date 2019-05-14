@@ -107,18 +107,25 @@ def hourglass(window, n, point, radius, color):
     circle.attach_to(window)
     r = circle.radius
     for j in range(n):
-        circle.center.x = circle.center.x - j*r
-        circle.center.y = circle.center.y - 2*j*r
-        line_of_circles(circle,j+1,window)
+        circle2 = circle.clone()
+        circle2.center.x = point.x - j*r
+        circle2.center.y = point.y - 2*j*r
+        circle2.fill_color = color
+        line_of_circles(circle2,(j+1),window)
 
 
     window.render()
 
-def line_of_circles(circle2, n, window):
+def line_of_circles(circle, n, window):
     for k in range(n):
-        circle2.center.x = circle2.center.x + 2*circle2.radius*k
+        circle2 = circle.clone()
+        circle2.fill_color = circle.fill_color
+        circle2.center.x = circle.center.x + 2*circle2.radius*k
         circle2.attach_to(window)
-
+        point1 = rg.Point(circle2.center.x-circle2.radius, circle2.center.y)
+        point2 = rg.Point(circle2.center.x+circle2.radius, circle2.center.y)
+        line = rg.Line(point1, point2)
+        line.attach_to(window)
 
 def run_test_many_hourglasses():
     """ Tests the    many_hourglasses    function. """
