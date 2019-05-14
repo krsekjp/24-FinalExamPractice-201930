@@ -6,8 +6,8 @@ This problem provides practice at:
 
 Authors: David Mutchler, Vibha Alangar, Matt Boutell, Dave Fisher,
          Mark Hays, Amanda Stouder, Aaron Wilkin, their colleagues,
-         and PUT_YOUR_NAME_HERE.
-"""  # TODO: 1. PUT YOUR NAME IN THE ABOVE LINE.
+         and Josh Krsek.
+"""  # DONE: 1. PUT YOUR NAME IN THE ABOVE LINE.
 
 ###############################################################################
 # Students:
@@ -35,7 +35,7 @@ import rosegraphics as rg
 def main():
     """ Calls the   TEST   functions in this module. """
     run_test_hourglass()
-    run_test_many_hourglasses()
+    #run_test_many_hourglasses()
 
 
 def run_test_hourglass():
@@ -102,6 +102,22 @@ def hourglass(window, n, point, radius, color):
     #    DIFFICULTY:      8
     #    TIME ESTIMATE:  25 minutes (warning: this problem is challenging)
     # -------------------------------------------------------------------------
+    circle = rg.Circle(point, radius)
+    circle.fill_color = color
+    circle.attach_to(window)
+    r = circle.radius
+    for j in range(n):
+        circle.center.x = circle.center.x - j*r
+        circle.center.y = circle.center.y - 2*j*r
+        line_of_circles(circle,j+1,window)
+
+
+    window.render()
+
+def line_of_circles(circle2, n, window):
+    for k in range(n):
+        circle2.center.x = circle2.center.x + 2*circle2.radius*k
+        circle2.attach_to(window)
 
 
 def run_test_many_hourglasses():

@@ -32,7 +32,7 @@ Authors: David Mutchler, Vibha Alangar, Matt Boutell, Dave Fisher,
 
 def main():
     """ Calls the   TEST   functions in this module. """
-    run_test_integers()
+    # run_test_integers()
     run_test_big_letters()
 
 
@@ -172,8 +172,8 @@ def run_test_big_letters():
     print('Actual is:  ', answer)
 
     # Test 2:
-    expected = 'HEYYYYY'
-    answer = big_letters([('Hello tErrY','how are You'), [0,1,2,3,4,5],[1,2,'YYY'],[]])
+    expected = 'HEYY'
+    answer = big_letters(['Hello tErrY','how are You', [0,1,2,3,4,5],[1,2,'YYY'],[]])
     print('Expected is:', expected)
     print('Actual is:  ', answer)
 
@@ -207,7 +207,7 @@ def big_letters(sequence_of_sequences):
     Precondition:  the given argument is a sequence of sequences.
     """
     # -------------------------------------------------------------------------
-    # TODO: 5. Implement and test this function.
+    # DONE: 5. Implement and test this function.
     #   Note that you should write its TEST function first (above).
     # -------------------------------------------------------------------------
     ###########################################################################
@@ -231,14 +231,12 @@ def big_letters(sequence_of_sequences):
     # -------------------------------------------------------------------------
     ups = ''
     for k in range(len(sequence_of_sequences)):
-        for j in range(len(sequence_of_sequences[k])):
-            #if type(sequence_of_sequences[k][j]) is str:
-            for i in range(len(sequence_of_sequences[k][j])):
-                if sequence_of_sequences[k][j][i].isupper() == True and type(sequence_of_sequences[k][j][i]) is str:
+        if type(sequence_of_sequences[k]) is str:
+            for j in range(len(sequence_of_sequences[k])):
+                if sequence_of_sequences[k][j].isupper() == True:
                     ups = ups + sequence_of_sequences[k][j]
     return ups
 # -----------------------------------------------------------------------------
 # Calls  main  to start the ball rolling.
 # -----------------------------------------------------------------------------
 main()
-''.isupper()
